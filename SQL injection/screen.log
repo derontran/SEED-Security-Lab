@@ -1,0 +1,78 @@
+Script started on Sat 03 Apr 2021 03:57:03 PM EDT
+[04/03/21]seed@VM:~/.../SQL injection$ as[K[Kmys[Ksql -u -[Kroot-[K -q[Kpseedubuntu
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 7
+Server version: 5.7.19-0ubuntu0.16.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| Users              |
+| elgg_csrf          |
+| elgg_xss           |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| sys                |
++--------------------+
+8 rows in set (0.01 sec)
+
+mysql> use Users
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> user [K[K[K[Kshow tables ;'[K
++-----------------+
+| Tables_in_Users |
++-----------------+
+| credential      |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> SE[K[Kselect * F[Kfrom credential where as[K[K[K[K[K[K[Kwhere a[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kshow cree[Kdential ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'credential' at line 1
+mysql> show credential ;[K;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'credential' at line 1
+mysql> use credential; 
+ERROR 1049 (42000): Unknown database 'credential'
+mysql> select * form [K[K[Krom credential
+    -> ;
++----+-------+-------+--------+-------+----------+-------------+---------+-------+----------+------------------------------------------+
+| ID | Name  | EID   | Salary | birth | SSN      | PhoneNumber | Address | Email | NickName | Password                                 |
++----+-------+-------+--------+-------+----------+-------------+---------+-------+----------+------------------------------------------+
+|  1 | Alice | 10000 |  20000 | 9/20  | 10211002 |             |         |       |          | fdbe918bdae83000aa54747fc95fe0470fff4976 |
+|  2 | Boby  | 20000 |  30000 | 4/20  | 10213352 |             |         |       |          | b78ed97677c161c1c82c142906674ad15242b2d4 |
+|  3 | Ryan  | 30000 |  50000 | 4/10  | 98993524 |             |         |       |          | a3c50276cb120637cca669eb38fb9928b017e9ef |
+|  4 | Samy  | 40000 |  90000 | 1/11  | 32193525 |             |         |       |          | 995b8b8c183f349b3cab0ae7fccd39133508d2af |
+|  5 | Ted   | 50000 | 110000 | 11/3  | 32111111 |             |         |       |          | 99343bff28a7bb51cb6f22cb20a618701a2c2f58 |
+|  6 | Admin | 99999 | 400000 | 3/5   | 43254314 |             |         |       |          | a5bdf35a1df4ea895905f6f6618e83951a6effc0 |
++----+-------+-------+--------+-------+----------+-------------+---------+-------+----------+------------------------------------------+
+6 rows in set (0.00 sec)
+
+mysql> select ev[7@mysql> [16G[K[K[K[K[K[K[K[Kselect * from credential where Name  = "Ac[Klice:[K"
+    -> ;
++----+-------+-------+--------+-------+----------+-------------+---------+-------+----------+------------------------------------------+
+| ID | Name  | EID   | Salary | birth | SSN      | PhoneNumber | Address | Email | NickName | Password                                 |
++----+-------+-------+--------+-------+----------+-------------+---------+-------+----------+------------------------------------------+
+|  1 | Alice | 10000 |  20000 | 9/20  | 10211002 |             |         |       |          | fdbe918bdae83000aa54747fc95fe0470fff4976 |
++----+-------+-------+--------+-------+----------+-------------+---------+-------+----------+------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> ^DBye
+[04/03/21]seed@VM:~/.../SQL injection$ exit
+exit
+
+Script done on Sat 03 Apr 2021 04:02:21 PM EDT

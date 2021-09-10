@@ -1,0 +1,7 @@
+gcc -z execstack -fno-stack-protector -g -o stack_dbg stack.c
+gdb -q stack_dbg
+b foo 
+run 
+p $ebp 
+p &buffer 
+p/d (ebp adress) - (buffer address) 
